@@ -1,0 +1,18 @@
+<section class="container">
+  <header class="header d-flex">
+    <h2 class="ff-inter">Meu mural</h2>
+    <button routerLink="/novoPensamento" routerLinkActive="router-link-active"  class="botao">Adicionar pensamento</button>
+  </header>
+  <div class="mural">
+    @if(!listaPensamentos.length){
+      <div class="ff-inter sem-pensamentos">
+        <p>Ainda não há pensamentos cadastrados :(</p>
+      </div>
+    }
+    @for (pensamento of listaPensamentos; track $index) {
+      <app-pensamento [pensamento]="pensamento" >
+      </app-pensamento>
+    }
+  </div>
+  <app-botao-carregar-mais [hasPensamentos]="hasPensamentos" (click)="loadPensamentos()" ></app-botao-carregar-mais>
+</section>
